@@ -4,8 +4,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 # Load datasets
-data1 = pd.read_csv('Data1_Sample.csv')
-data2 = pd.read_csv('Data2_Sample.csv')
+data1 = pd.read_csv('data/Data1_Sample.csv')
+data2 = pd.read_csv('data/Data2_Sample.csv')
 
 print(f'Data1 loaded with {len(data1)} rows')
 print(f'Data2 loaded with {len(data2)} rows')
@@ -54,13 +54,13 @@ data1['Matched_Excel_Company_ID'] = matches
 
 # Identify unmatched firms
 unmatched_firms = data1[data1['Matched_Excel_Company_ID'] == '']
-unmatched_file = 'Unmatched_Companies.csv'
+unmatched_file = 'result/Unmatched_Companies.csv'
 unmatched_firms.to_csv(unmatched_file, index=False)
 
 print(f'Unmatched firms saved to {unmatched_file}')
 
 # Save output
-output_file = 'Matched_Companies.csv'
+output_file = 'result/Matched_Companies.csv'
 data1.to_csv(output_file, index=False)
 
 print(f'Matching completed. Results saved to {output_file}')
